@@ -1,7 +1,7 @@
-async function sendEmail() {
-  try {
-    await fetch('https://sendsail.onrender.com/send', {
+function sendEmail() {
+    fetch('https://sendsail.onrender.com/send', {
       method: 'POST',
+      mode:'cors',
       headers: {
         'Content-Type':'application/json'
       },
@@ -10,11 +10,9 @@ async function sendEmail() {
         to:'joaosilva2505@outlook.com',
         subject:'Fala amiguito',
         text:'Olá amiguito'
-      })
+      }),
     })
-
-  }
-  catch(error) {
-    console.log('Deu ruim')
-  }
+    .then((res)=> res.json())
+    .then((data)=>console.log(data))
+    .catch((error)=>console.log(error))
 }
